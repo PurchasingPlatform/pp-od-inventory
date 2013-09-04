@@ -80,7 +80,7 @@ response = client.send_request(request)
 Response:
 
 ```
-#<OfficeDepot::InventoryCheck::Response:0x007ff5cc2622c0
+<OfficeDepot::InventoryCheck::Response:0x007ff5cc2622c0
  @error=false,
  @has_errors=true,
  @items=

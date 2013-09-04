@@ -1,6 +1,7 @@
 require "securerandom"
 require "faraday"
 require "xmlsimple"
+require "time"
 
 module OfficeDepot
   module InventoryCheck

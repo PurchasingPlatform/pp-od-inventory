@@ -79,28 +79,26 @@ response = client.send_request(request)
 
 Response:
 
-```
-<OfficeDepot::InventoryCheck::Response:0x007ff5cc2622c0
- @error=false,
- @has_errors=true,
- @items=
-  [#<OfficeDepot::InventoryCheck::ResponseItem:0x007ff5cc3c99d8
-    @error_code={},
-    @error_description={},
-    @line_number=1,
-    @quantity=1,
-    @quantity_available=true,
-    @quantity_left=nil,
-    @sku="863173",
-    @valid=true>,
-   #<OfficeDepot::InventoryCheck::ResponseItem:0x007ff5cc3c97d0
-    @error_code={},
-    @error_description={},
-    @line_number=2,
-    @quantity=1,
-    @quantity_available=true,
-    @quantity_left=nil,
-    @sku="706252",
-    @valid=true>
-  ]>
-```
+    <#OfficeDepot::InventoryCheck::Response:0x007ff5cc2622c0
+     @error=false,
+     @has_errors=true,
+     @items=
+      [#<OfficeDepot::InventoryCheck::ResponseItem:0x007ff5cc3c99d8
+        @error_code={},
+        @error_description={},
+        @line_number=1,
+        @quantity=1,
+        @quantity_available=true,
+        @quantity_left=nil,
+        @sku="863173",
+        @valid=true>,
+       #<OfficeDepot::InventoryCheck::ResponseItem:0x007ff5cc3c97d0
+        @error_code={},
+        @error_description={},
+        @line_number=2,
+        @quantity=1,
+        @quantity_available=true,
+        @quantity_left=nil,
+        @sku="706252",
+        @valid=true>
+      ]>

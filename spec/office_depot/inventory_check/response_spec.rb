@@ -14,7 +14,7 @@ describe OfficeDepot::InventoryCheck::Response do
     let(:data)     { fixture("invalid_credential.xml") }
     let(:response) { klass.new(data) }
 
-    it "has error" do
+    it "has an error" do
       expect(response.error).to eq true
       expect(response.error_code).to eq "01"
       expect(response.error_description).to match /we could not find information for user/i
@@ -68,6 +68,35 @@ describe OfficeDepot::InventoryCheck::Response do
       it "returns false" do
         expect(response.has_errors?).to eq false
       end
+    end
+  end
+
+  describe "on invalid item response" do
+    let(:data)     { fixture("invalid_item.xml") }
+    let(:response) { klass.new(data) }
+
+    it "does not have an error" do
+      expect(response.error).to eq false
+    end
+
+    it "assigns items" do
+      expect(response.items.size).to eq 1
+    end
+
+    it "assigns item error" do
+      item = response.items.first
+
+      expect(item.valid).to eq false
+      expect(item.error_code).to eq "02"
+      expect(item.error_description).to match /The SKU number is not valid/
+    end
+
+    it "assigns item attributes" do
+      item = response.items.first
+
+      expect(item.quantity).to eq 1
+      expect(item.quantity_left).to eq nil
+      expect(item.quantity_available).to eq false
     end
   end
 end

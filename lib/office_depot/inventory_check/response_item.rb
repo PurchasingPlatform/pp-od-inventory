@@ -19,7 +19,9 @@ module OfficeDepot
           @error_code = nil
         end
 
-        if @error_description == {}
+        if @error_description.kind_of?(String)
+          @error_description = @error_description.gsub(/[\s]{2,}/, " ")
+        else
           @error_description = nil
         end
       end

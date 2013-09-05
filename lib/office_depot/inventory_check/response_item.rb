@@ -25,6 +25,29 @@ module OfficeDepot
           @error_description = nil
         end
       end
+
+      def self.build(data)
+        qty_left = nil
+        qty_available = false
+
+        if data["QtyAvail"][0] =~ /^[\d]+$/
+          qty_left = Integer(data["QtyAvail"][0])
+          qty_available = true
+        else
+          qty_available = data["QtyAvail"][0] == "true"
+        end
+
+        OfficeDepot::InventoryCheck::ResponseItem.new(
+          line_number:        Integer(data["LineNumber"][0]),
+          sku:                data["Sku"][0],
+          quantity:           Integer(data["QtyReq"][0]),
+          quantity_left:      qty_left,
+          quantity_available: qty_available,
+          error_code:         data["ErrCode"][0],
+          error_description:  data["ErrDescription"][0],
+          valid:              (data["valid"] == "true")
+        )
+      end
     end
   end
 end

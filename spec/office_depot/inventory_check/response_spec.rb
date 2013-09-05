@@ -10,7 +10,7 @@ describe OfficeDepot::InventoryCheck::Response do
     end
   end
 
-  describe "invalid authentication credential" do
+  describe "on invalid authentication credential" do
     let(:data)     { fixture("invalid_credential.xml") }
     let(:response) { klass.new(data) }
 
@@ -26,7 +26,7 @@ describe OfficeDepot::InventoryCheck::Response do
     end
   end
 
-  describe "successful xml response" do
+  describe "on successful xml response" do
     let(:data)     { fixture("success.xml") }
     let(:response) { klass.new(data) }
 

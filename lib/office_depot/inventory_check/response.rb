@@ -56,7 +56,7 @@ module OfficeDepot
       end
 
       def check_for_errors
-        @has_errors = @items.select { |item| item.valid == false }.size > 0
+        @has_errors = invalid_items.size > 0
       end
 
       def build_item(data)

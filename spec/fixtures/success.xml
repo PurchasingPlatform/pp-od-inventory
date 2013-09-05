@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<ODPriceAvailability>
+  <Header>
+    <Username>67028207-cxml</Username>
+    <Password>Z2lFc7Enm2MUCHw6</Password>
+    <ShipTo>
+      <Addr id="TEST ORDER">
+        <Name>Doejo HQ</Name>
+        <PostalAddress>
+          <Address1>3128 N Broadway</Address1>
+          <Address2></Address2>
+          <City>Chicago</City>
+          <State>IL</State>
+          <PostalCode>60657</PostalCode>
+          <Country>United States</Country>
+        </PostalAddress>
+        <Contact>
+          <Name></Name>
+          <Email type="*NONE"/>
+        </Contact>
+      </Addr>
+    </ShipTo>
+    <BillTo>
+      <Addr>
+        <Name>PURCHASING PLATFORM LLC</Name>
+      </Addr>
+    </BillTo>
+  </Header>
+  <Response>
+    <ResponseItem valid="true">
+      <LineNumber>1</LineNumber>
+      <Sku>930784</Sku>
+      <CustSKU>930784</CustSKU>
+      <UnitOfMeasure>EA</UnitOfMeasure>
+      <Description>BINDER,D-RG,VNL,11X8.5,1.5C,BK</Description>
+      <CustomerItemDescription/>
+      <Classification/>
+      <UnitPrice>3.07</UnitPrice>
+      <ExtPrice/>
+      <Comments></Comments>
+      <Tax/>
+      <VendorProductCode/>
+      <QtyReq>1</QtyReq>
+      <QtyAvail>13</QtyAvail>
+      <Weight></Weight>
+      <CustomerPrice>0.0</CustomerPrice>
+      <CustomerUOM>EA</CustomerUOM>
+      <ErrCode>00</ErrCode>
+      <ErrDescription>none</ErrDescription>
+    </ResponseItem>
+  </Response>
+</ODPriceAvailability>

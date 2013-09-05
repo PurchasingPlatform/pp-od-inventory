@@ -26,6 +26,20 @@ module OfficeDepot
         end
       end
 
+      def to_hash
+        attrs = [
+          :line_number, :sku, :valid, :quantity, :quantity_available, :quantity_left,
+          :error_code, :error_description
+        ]
+
+        result = {}
+        attrs.each do |name|
+          result[name] = self.send(name)
+        end
+
+        result
+      end
+
       def self.build(data)
         qty_left = nil
         qty_available = false

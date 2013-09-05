@@ -10,6 +10,22 @@ describe OfficeDepot::InventoryCheck::Response do
     end
   end
 
+  describe "invalid authentication credential" do
+    let(:data)     { fixture("invalid_credential.xml") }
+    let(:response) { klass.new(data) }
+
+    it "has error" do
+      expect(response.error).to eq true
+      expect(response.error_code).to eq "01"
+      expect(response.error_description).to match /we could not find information for user/i
+    end
+
+    it "does not have items" do
+      expect(response.items).to be_an Array
+      expect(response.items.size).to eq 0
+    end
+  end
+
   describe "successful xml response" do
     let(:data)     { fixture("success.xml") }
     let(:response) { klass.new(data) }
@@ -36,6 +52,10 @@ describe OfficeDepot::InventoryCheck::Response do
       expect(item.quantity_left).to eq 13
       expect(item.error_code).to eq "00"
       expect(item.error_description).to eq "none"
+    end
+
+    it "does not have invalid items" do
+      expect(response.invalid_items).to be_empty
     end
 
     describe "#success?" do

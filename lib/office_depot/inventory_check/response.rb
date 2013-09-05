@@ -5,6 +5,8 @@ module OfficeDepot
       attr_reader :items
 
       def initialize(data)
+        @items = []
+
         hash = parse_xml(data)
 
         if hash["Error"]
@@ -20,6 +22,10 @@ module OfficeDepot
 
       def has_errors?
         @has_errors == true
+      end
+
+      def invalid_items
+        @items.select { |item| item.valid == false }
       end
 
       private
@@ -44,8 +50,8 @@ module OfficeDepot
       end
 
       def build_items(data)
-        @items = data["Response"][0]["ResponseItem"].map do |chunk|
-          build_item(chunk)
+        data["Response"][0]["ResponseItem"].map do |chunk|
+          @items << build_item(chunk)
         end
       end
 

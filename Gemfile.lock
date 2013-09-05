@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    od-inventory-check (0.1.0)
+    od-inventory-check (1.0.0)
       faraday (~> 0.8)
       xml-simple (~> 1.1)
 

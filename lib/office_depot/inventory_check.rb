@@ -5,6 +5,8 @@ require "time"
 
 module OfficeDepot
   module InventoryCheck
+    class Error < StandardError ; end
+
     autoload :Address,      "office_depot/inventory_check/address"
     autoload :Client,       "office_depot/inventory_check/client"
     autoload :Credential,   "office_depot/inventory_check/credential"

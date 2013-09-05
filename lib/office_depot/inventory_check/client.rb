@@ -14,6 +14,10 @@ module OfficeDepot
           req.url "/invoke/ODServices/odPriceAvailability"
           req.body = request.to_cxml
         end
+
+        unless response.success?
+          raise OfficeDepot::InventoryCheck::Error, "Unable to process request!"
+        end
         
         OfficeDepot::InventoryCheck::Response.new(response.body)
       end

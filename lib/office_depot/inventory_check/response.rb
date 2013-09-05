@@ -28,6 +28,15 @@ module OfficeDepot
         @items.select { |item| item.valid == false }
       end
 
+      def to_hash
+        {
+          error: error,
+          error_code: error_code,
+          error_description: error_description,
+          items: items.map(&:to_hash)
+        }
+      end
+
       private
 
       def parse_xml(data)

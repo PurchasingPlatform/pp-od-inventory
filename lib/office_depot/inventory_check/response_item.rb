@@ -14,6 +14,14 @@ module OfficeDepot
         @error_code         = options[:error_code]
         @error_description  = options[:error_description]
         @valid              = options[:valid]
+
+        if @error_code == {}
+          @error_code = nil
+        end
+
+        if @error_description == {}
+          @error_description = nil
+        end
       end
     end
   end

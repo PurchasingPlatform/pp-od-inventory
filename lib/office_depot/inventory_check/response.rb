@@ -5,7 +5,7 @@ module OfficeDepot
       attr_reader :items
 
       def initialize(data)
-        hash = XmlSimple.xml_in(data)
+        hash = parse_xml(data)
 
         if hash["Error"]
           assign_error(hash["Error"][0])
@@ -23,6 +23,12 @@ module OfficeDepot
       end
 
       private
+
+      def parse_xml(data)
+        XmlSimple.xml_in(data)
+      rescue Exception => err
+        raise OfficeDepot::InventoryCheck::Error, err.message
+      end
 
       def assign_error(data)
         @error             = true
@@ -48,12 +54,22 @@ module OfficeDepot
       end
 
       def build_item(data)
+        qty_left = nil
+        qty_available = false
+
+        if data["QtyAvail"][0] =~ /^[\d]+$/
+          qty_left = Integer(data["QtyAvail"][0])
+          qty_available = true
+        else
+          qty_available = data["QtyAvail"][0] == "true"
+        end
+
         OfficeDepot::InventoryCheck::ResponseItem.new(
           line_number:        Integer(data["LineNumber"][0]),
           sku:                data["Sku"][0],
           quantity:           Integer(data["QtyReq"][0]),
-          quantity_left:      data["QtyAvail"][0] =~ /^[\d]+$/ ? Integer(data["QtyAvail"][0]) : nil,
-          quantity_available: (data["QtyAvail"][0] == "true"),
+          quantity_left:      qty_left,
+          quantity_available: qty_available,
           error_code:         data["ErrCode"][0],
           error_description:  data["ErrDescription"][0],
           valid:              (data["valid"] == "true")

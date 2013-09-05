@@ -99,4 +99,15 @@ describe OfficeDepot::InventoryCheck::Response do
       expect(item.quantity_available).to eq false
     end
   end
+
+  describe "#invalid_items" do
+    let(:data)     { fixture("response1.xml") }
+    let(:response) { klass.new(data) }
+
+    it "returns array of invalid items" do
+      expect(response.invalid_items).to be_an Array
+      expect(response.invalid_items.size).to eq 1
+      expect(response.invalid_items.first.error_description).to match /is not available for purchase/i
+    end
+  end
 end

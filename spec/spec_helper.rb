@@ -2,6 +2,7 @@ require "simplecov"
 
 SimpleCov.start do
   add_filter "/spec/"
+  add_filter "/.bundle/"
 end
 
 $:.unshift File.expand_path("../..", __FILE__)

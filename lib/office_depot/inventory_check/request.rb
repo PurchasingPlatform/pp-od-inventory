@@ -8,7 +8,7 @@ module OfficeDepot
                   :items
 
       def initialize(options={})
-        @timestamp  = options[:timestamp]
+        @timestamp  = options[:timestamp] || Time.now.iso8601
         @payload_id = options[:payload_id]
         @credential = options[:credential]
         @address    = options[:address]

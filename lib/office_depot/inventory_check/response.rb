@@ -16,14 +16,17 @@ module OfficeDepot
         end
       end
 
+      # Returns true if request has been processed correctly
       def success?
         @error == false
       end
 
+      # Returns true if any item in response is invalid
       def has_errors?
         @has_errors == true
       end
 
+      # Returns a collection of invalid items (discontinued, etc)
       def invalid_items
         @items.select { |item| item.valid == false }
       end

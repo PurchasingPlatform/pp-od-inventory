@@ -7,6 +7,7 @@ end
 
 $:.unshift File.expand_path("../..", __FILE__)
 
+require "webmock/rspec"
 require "office_depot/inventory_check"
 
 def fixture_path(filename=nil)

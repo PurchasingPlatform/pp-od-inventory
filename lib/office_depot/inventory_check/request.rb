@@ -1,11 +1,11 @@
 module OfficeDepot
   module InventoryCheck
     class Request
-      attr_reader :timestamp
-      attr_reader :payload_id
-      attr_reader :credential
-      attr_reader :address
-      attr_reader :items
+      attr_reader :timestamp,
+                  :payload_id,
+                  :credential,
+                  :address,
+                  :items
 
       def initialize(options={})
         @timestamp  = options[:timestamp]

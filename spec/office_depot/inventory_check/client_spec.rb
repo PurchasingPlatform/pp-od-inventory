@@ -99,7 +99,7 @@ describe OfficeDepot::InventoryCheck::Client do
           to_return(status: 200, body: fixture("invalid_item.xml"))
       end
 
-      it "returns response with credential error" do
+      it "returns response with invalid items" do
         expect(response.success?).to eq true
         expect(response.has_errors?).to eq true
       end

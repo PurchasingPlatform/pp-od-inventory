@@ -110,4 +110,16 @@ describe OfficeDepot::InventoryCheck::Response do
       expect(response.invalid_items.first.error_description).to match /is not available for purchase/i
     end
   end
+
+  describe "#to_hash" do
+    let(:data) { fixture("response1.xml") }
+    let(:hash) { klass.new(data).to_hash }
+
+    it "returns hash representation" do
+      expect(hash[:error]).to eq false
+      expect(hash[:error_code]).to eq nil
+      expect(hash[:error_description]).to eq nil
+      expect(hash[:items]).to be_an Array
+    end
+  end
 end

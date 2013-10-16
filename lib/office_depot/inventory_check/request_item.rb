@@ -1,9 +1,13 @@
 module OfficeDepot
   module InventoryCheck
     class RequestItem
-      attr_accessor :line_number, :sku, :quantity
-      attr_accessor :unit_price, :unit_of_measure
-      attr_accessor :description, :comments
+      attr_accessor :line_number,
+                    :sku,
+                    :quantity,
+                    :unit_price,
+                    :unit_of_measure,
+                    :description,
+                    :comments
 
       def initialize(options={})
         @line_number     = options[:line_number]

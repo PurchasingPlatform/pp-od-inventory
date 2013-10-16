@@ -1,9 +1,14 @@
 module OfficeDepot
   module InventoryCheck
     class Address
-      attr_accessor :title
-      attr_accessor :address, :address2, :city, :state, :zip, :country
-      attr_accessor :contact
+      attr_accessor :title,
+                    :address,
+                    :address2,
+                    :city,
+                    :state,
+                    :zip,
+                    :country,
+                    :contact
 
       def initialize(options={})
         @title    = options[:title]

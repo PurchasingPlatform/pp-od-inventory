@@ -1,9 +1,14 @@
 module OfficeDepot
   module InventoryCheck
     class ResponseItem
-      attr_reader :line_number, :sku, :valid
-      attr_reader :quantity, :quantity_available, :quantity_left
-      attr_reader :error_code, :error_description
+      attr_reader :line_number,
+                  :sku,
+                  :valid,
+                  :quantity,
+                  :quantity_available,
+                  :quantity_left,
+                  :error_code,
+                  :error_description
 
       def initialize(options={})
         @line_number        = options[:line_number]

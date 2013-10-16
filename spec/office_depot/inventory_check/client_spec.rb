@@ -52,8 +52,9 @@ describe OfficeDepot::InventoryCheck::Client do
     end
 
     it "requires a request instance as argument" do
-      expect { client.send_request(nil) }.to raise_error ArgumentError, "Request instance required"
-      expect { client.send_request(request) }.not_to raise_error ArgumentError
+      expect { 
+        client.send_request(nil)
+      }.to raise_error ArgumentError, "Request instance required"
     end
 
     context "request fails" do
@@ -76,7 +77,7 @@ describe OfficeDepot::InventoryCheck::Client do
 
       it "does not raise error" do
         expect { client.send_request(request) }.
-          not_to raise_error OfficeDepot::InventoryCheck::Error
+          not_to raise_error
       end
     end
 

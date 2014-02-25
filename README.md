@@ -14,7 +14,7 @@ cd pp-od-inventory
 bundle install
 ```
 
-##  Usage
+## Usage
 
 Require gem:
 
@@ -102,3 +102,11 @@ Response:
         @sku="706252",
         @valid=true>
       ]>
+
+## Test
+
+To execute test suite run rake command:
+
+```
+rake test
+```

@@ -10,20 +10,20 @@ module OfficeDepot
 
         response = make_api_call("/invoke/ODServices/odPriceAvailability", request)
 
-        # Non-successful requests are usually when something wrong 
+        # Non-successful requests are usually when something wrong
         # with backend. Invalid credentials do not raise exceptions. It'll
         # only return error in response object.
         unless response.success?
           raise OfficeDepot::InventoryCheck::Error, "Request failed"
         end
-        
+
         OfficeDepot::InventoryCheck::Response.new(response.body)
       end
 
       private
 
       def connection
-        Faraday.new(url: API_ENDPOINT, ssl: { version: "SSLv3" }) do |faraday|
+        Faraday.new(url: API_ENDPOINT, ssl: { version: "TLSv1" }) do |faraday|
           faraday.adapter(Faraday.default_adapter)
         end
       end

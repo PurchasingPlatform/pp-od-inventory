@@ -25,6 +25,7 @@ module OfficeDepot
       def connection
         Faraday.new(url: API_ENDPOINT, ssl: { version: "TLSv1" }) do |faraday|
           faraday.adapter(Faraday.default_adapter)
+          faraday.request :retry, max: 2, interval: 0.05, interval_randomness: 0.5, backoff_factor: 2, exceptions: ['Timeout::Error']
         end
       end
 
@@ -38,6 +39,10 @@ module OfficeDepot
           req.headers.merge!(headers)
           req.url(path)
           req.body = request.to_cxml
+          req.options = {
+            timeout:      80,
+            open_timeout: 60
+          }
         end
       end
     end

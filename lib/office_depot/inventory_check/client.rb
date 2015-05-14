@@ -32,7 +32,7 @@ module OfficeDepot
       private
 
       def connection
-        Faraday.new(url: endpoint, ssl: { version: "TLSv1_2" }) do |faraday|
+        Faraday.new(url: endpoint, ssl: { version: "TLSv1" }) do |faraday|
           faraday.adapter(Faraday.default_adapter)
           faraday.request :retry, max: 2, interval: 0.05, interval_randomness: 0.5, backoff_factor: 2, exceptions: ['Timeout::Error']
         end

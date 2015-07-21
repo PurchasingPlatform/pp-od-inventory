@@ -4,7 +4,6 @@ module OfficeDepot
       attr_accessor :line_number,
                     :sku,
                     :quantity,
-                    :unit_price,
                     :unit_of_measure,
                     :description,
                     :comments
@@ -13,7 +12,6 @@ module OfficeDepot
         @line_number     = options[:line_number]
         @sku             = options[:sku]
         @quantity        = options[:quantity]
-        @unit_price      = options[:unit_price]
         @unit_of_measure = options[:unit_of_measure]
         @description     = options[:description] || ""
         @comments        = options[:comments] || ""
@@ -24,7 +22,6 @@ module OfficeDepot
           "LineNumber"    => [line_number],
           "Sku"           => [sku],
           "Qty"           => [quantity],
-          "UnitPrice"     => [unit_price],
           "UnitOfMeasure" => [unit_of_measure],
           "Description"   => [description],
           "Comments"      => [comments]

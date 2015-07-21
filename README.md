@@ -44,7 +44,6 @@ items << OfficeDepot::InventoryCheck::RequestItem.new(
   line_number: 1,
   sku: "123456",
   quantity: 1,
-  unit_price: 10.00,
   unit_of_measure: "EA"
 )
 ```

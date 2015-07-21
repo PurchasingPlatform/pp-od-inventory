@@ -33,7 +33,6 @@ describe OfficeDepot::InventoryCheck::Client do
         line_number: 1,
         sku: "123456",
         quantity: 1,
-        unit_price: 10.00,
         unit_of_measure: "EA"
       )
     end
@@ -52,7 +51,7 @@ describe OfficeDepot::InventoryCheck::Client do
     end
 
     it "requires a request instance as argument" do
-      expect { 
+      expect {
         client.send_request(nil)
       }.to raise_error ArgumentError, "Request instance required"
     end

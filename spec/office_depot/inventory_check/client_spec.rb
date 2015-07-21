@@ -2,7 +2,15 @@ require "spec_helper"
 
 describe OfficeDepot::InventoryCheck::Client do
   it "has a production endpoint" do
-    expect(OfficeDepot::InventoryCheck::Client::API_ENDPOINT).to eq "https://b2b.officedepot.com"
+    expect(OfficeDepot::InventoryCheck::Client.new.endpoint).to eq "https://b2b.officedepot.com"
+  end
+
+  it "has a test endpoint" do
+    expect(OfficeDepot::InventoryCheck::Client.new(:test).endpoint).to eq "https://b2bwmvendors.officedepot.com"
+  end
+
+  it "raises when instantiated with a bad environment" do
+    expect { OfficeDepot::InventoryCheck::Client.new(:jambalaya) }.to raise_error "Bad environment"
   end
 
   describe "#send_request" do

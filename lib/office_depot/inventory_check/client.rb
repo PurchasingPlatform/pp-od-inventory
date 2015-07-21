@@ -1,7 +1,16 @@
 module OfficeDepot
   module InventoryCheck
     class Client
-      API_ENDPOINT = "https://b2b.officedepot.com"
+      API_ENDPOINTS = {
+        test:       "https://b2bwmvendors.officedepot.com",
+        production: "https://b2b.officedepot.com"
+      }
+
+      attr_reader :endpoint
+
+      def initialize(env = :production)
+        @endpoint = API_ENDPOINTS[env.to_sym] or raise "Bad environment"
+      end
 
       def send_request(request)
         if !request.kind_of?(OfficeDepot::InventoryCheck::Request)
@@ -23,7 +32,7 @@ module OfficeDepot
       private
 
       def connection
-        Faraday.new(url: API_ENDPOINT, ssl: { version: "TLSv1" }) do |faraday|
+        Faraday.new(url: endpoint, ssl: { version: "TLSv1" }) do |faraday|
           faraday.adapter(Faraday.default_adapter)
           faraday.request :retry, max: 2, interval: 0.05, interval_randomness: 0.5, backoff_factor: 2, exceptions: ['Timeout::Error']
         end

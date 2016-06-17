@@ -1,5 +1,3 @@
-require "bundler"
-require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 
 RSpec::Core::RakeTask.new(:test) do |t|
@@ -7,4 +5,4 @@ RSpec::Core::RakeTask.new(:test) do |t|
   t.verbose = false
 end
 
-task :default => :test
+task default: :test

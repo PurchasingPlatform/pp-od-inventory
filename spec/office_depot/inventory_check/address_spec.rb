@@ -1,26 +1,27 @@
-require "spec_helper"
-
 describe OfficeDepot::InventoryCheck::Address do
-  it { should respond_to :title }
-  it { should respond_to :address }
-  it { should respond_to :address2 }
-  it { should respond_to :city }
-  it { should respond_to :state }
-  it { should respond_to :zip }
-  it { should respond_to :country }
-  it { should respond_to :contact }
+  it { is_expected.to respond_to :title }
+  it { is_expected.to respond_to :address }
+  it { is_expected.to respond_to :address2 }
+  it { is_expected.to respond_to :city }
+  it { is_expected.to respond_to :state }
+  it { is_expected.to respond_to :zip }
+  it { is_expected.to respond_to :country }
+  it { is_expected.to respond_to :contact }
+
+  let(:address) do
+    described_class.new(
+      title:   "Doejo HQ",
+      address: "3128 N Broadway",
+      city:    "Chicago",
+      state:   "IL",
+      zip:     "60657",
+      country: "United States",
+      contact: "John Doe"
+    )
+  end
 
   describe "#initialize" do
     it "assigns attributes" do
-      address = OfficeDepot::InventoryCheck::Address.new(
-        title:   "Doejo HQ",
-        address: "3128 N Broadway",
-        city:    "Chicago",
-        state:   "IL",
-        zip:     "60657",
-        country: "United States"
-      )
-
       expect(address.title).to eq "Doejo HQ"
       expect(address.address).to eq "3128 N Broadway"
       expect(address.city).to eq "Chicago"
@@ -31,26 +32,8 @@ describe OfficeDepot::InventoryCheck::Address do
   end
 
   describe "#to_hash" do
-    let(:address) do
-      OfficeDepot::InventoryCheck::Address.new(
-        title:   "Doejo HQ",
-        address: "3128 N Broadway",
-        city:    "Chicago",
-        state:   "IL",
-        zip:     "60657",
-        country: "United States",
-        contact: "John Doe"
-      )
-    end
-
     let(:hash) { address.to_hash }
-
-    it "sets attributes" do
-      expect(hash["id"]).not_to be_nil
-      expect(hash["Name"]).not_to be_nil
-      expect(hash["PostalAddress"]).not_to be_nil
-      expect(hash["Contact"]).not_to be_nil
-    end
+    let(:addr) { hash["PostalAddress"][0] }
 
     it "includes address id" do
       expect(hash["id"]).to eq "TEST ORDER"
@@ -65,10 +48,6 @@ describe OfficeDepot::InventoryCheck::Address do
     end
 
     it "includes postal address" do
-      expect(hash["PostalAddress"]).to be_an Array
-
-      addr = hash["PostalAddress"][0]
-
       expect(addr["Address1"]).to eq ["3128 N Broadway"]
       expect(addr["City"]).to eq ["Chicago"]
       expect(addr["State"]).to eq ["IL"]

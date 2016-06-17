@@ -5,8 +5,6 @@ SimpleCov.start do
   add_filter "/.bundle/"
 end
 
-$:.unshift File.expand_path("../..", __FILE__)
-
 require "webmock/rspec"
 require "office_depot/inventory_check"
 

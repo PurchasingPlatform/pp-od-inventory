@@ -48,10 +48,8 @@ module OfficeDepot
           req.headers.merge!(headers)
           req.url(path)
           req.body = request.to_cxml
-          req.options = {
-            timeout:      80,
-            open_timeout: 60
-          }
+          req.options.timeout = 80
+          req.options.open_timeout = 60
         end
       end
     end

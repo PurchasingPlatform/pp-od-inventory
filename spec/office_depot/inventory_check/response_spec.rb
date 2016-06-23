@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe OfficeDepot::InventoryCheck::Response do
   let(:klass) { OfficeDepot::InventoryCheck::Response }
 

@@ -25,4 +25,4 @@ test/version_tmp
 tmp
 tmtags
 public/static
-REVISION
+Gemfile.lock

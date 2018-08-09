@@ -11,12 +11,12 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.add_dependency "xml-simple", "~> 1.1"
-  spec.add_dependency "faraday",    "~> 0.9"
+  spec.add_dependency "faraday",    "~> 0.15"
 
   spec.add_development_dependency "rspec",     "~> 3.4"
   spec.add_development_dependency "rake",      "~> 10"
-  spec.add_development_dependency "simplecov", "~> 0.11"
-  spec.add_development_dependency "webmock",   "~> 1.15"
+  spec.add_development_dependency "simplecov", "~> 0.16"
+  spec.add_development_dependency "webmock",   "~> 2.3.2"
 
   spec.files = Dir["lib/*.rb"] + Dir["lib/office_depot/*.rb"]
   spec.files += Dir["[A-Z]*"] + Dir["spec/**/*"]
